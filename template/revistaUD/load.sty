@@ -1,0 +1,18 @@
+\RequirePackage{sectsty}
+\RequirePackage[explicit,calcwidth]{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{titletoc}
+\ifwindows
+	\RequirePackage{\paththeme/install}	
+\fi
+\iflinux
+	\RequirePackage{\paththeme/install}
+\fi
+\ifwindows
+	\RequirePackage{xstring}
+	\StrSubstitute{\paththeme}{/}{\\}[\temppaththeme]
+	\AtEndDocument{\ShellEscape{del \temppaththeme\\lib\\*.sty}}
+\fi
+\iflinux
+	\AtEndDocument{\ShellEscape{rm \paththeme/lib/*.sty}}
+\fi

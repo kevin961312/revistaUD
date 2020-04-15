@@ -1,0 +1,68 @@
+\newcommand{\CoverName}{Cover}%
+\makeatletter  
+\makeatother
+\begin{titlepage}
+	\renewcommand{\thepage}{\CoverName}
+	\noindent
+	\AddToShipoutPicture*{\put(0,0){
+		\includegraphics[scale=1]{png/coverAzul.png}}
+	} 
+%	\put(0,0){
+%		%transparentbox
+%		\begin{tcolorbox}[transparent, width = 10cm]
+%			\textbf{\printtitle}\\ \\
+%			{\huge \textbf{\printedicion}}	
+%%			\begin{tcolorbox}[transparentbox]
+%%				\printauthor 
+%%			\end{tcolorbox}  
+%		\end{tcolorbox}       
+%	}
+%	\AddToShipoutPicture*{
+%		\put(0,500){
+%			{\huge \textbf{\printedicion}}	
+%		}
+%	}
+%	\AddToShipoutPicture*{
+%			\put(520,140){
+%				\transparent{0.7}{\includegraphics[scale=.4]{\printlogo}}
+%			}
+%		} 
+%	\AddToShipoutPicture*{
+%		\put(150,145){
+%			{\Huge \textbf{LosAcademycos.com}}	
+%		}
+%	} 
+\end{titlepage}
+\newpage\text{ }\thispagestyle{empty}\newpage 
+%contraportada
+\begin{coverpage}
+		\vspace{2cm}
+		\begin{tcolorbox}[transparentbox, width = \textwidth]
+			\begin{center}
+				\printtitle
+			\end{center}
+			\printauthor 
+			\begin{center}
+				{	
+					\color{contraportada}\rule{\linewidth}{2pt}
+					\hspace{2cm}\rule{\linewidth-2cm}{2pt}
+				}
+			\end{center}
+			
+		\end{tcolorbox}
+		\begin{tcolorbox}[transparentbox, width = \textwidth]
+			\begin{flushright}
+				\Large\printedicion
+			\end{flushright}
+		\end{tcolorbox}
+		\vspace{7cm}
+		\begin{tcolorbox}[transparentbox, enhanced,spread downwards]
+			\begin{center}
+				\includegraphics[scale=.27]{\printlogo} 
+			\end{center}
+		\end{tcolorbox}
+\end{coverpage}
+\begin{copyrightpage}
+	\Large Copyright \textcopyright\ LosAcademycos todos los derechos reservados.
+\end{copyrightpage}		
+\newpage\text{ }\thispagestyle{empty}\newpage 

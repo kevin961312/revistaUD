@@ -1,0 +1,23 @@
+\newpage
+\textbf{ }
+\newpage
+\begin{coverpage}
+		\AddToShipoutPicture*{\put(-25,-420){
+				\includesvg[scale=1]{svg/backcover.svg}}
+		}
+		\AddToShipoutPicture*{
+			\put(370,550){
+				\transparent{0.7}{\includegraphics[scale=.35]{\printlogo}}
+			}
+		} 
+			\put(0,0){
+				\begin{tcolorbox}[transparentbox, width = 7.5cm]
+					%\color{white}
+					\begin{center}
+						\printtitle
+					\end{center}
+					\justify
+					\printbackcover
+				\end{tcolorbox}       
+			}
+\end{coverpage}

@@ -1,0 +1,168 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{designAcademycos}[2019/07/29 Design Editorial LosAcademycos.com]
+\RequirePackage[utf8]{inputenc} % set input encoding
+\RequirePackage[spanish,activeacute]{babel}%idioma document
+\RequirePackage{import, amsmath, amsfonts, amssymb}%import matematicas
+\RequirePackage{yfonts, lmodern}%German fonts, computer modern font
+\RequirePackage{ragged2e}%alinear texto
+\RequirePackage{forloop}%No eliminar sirva para comandos sage
+%-------------------------------------------
+% INICIO Imagenes, tikz
+%-------------------------------------------
+\RequirePackage{tikz}
+\usetikzlibrary{shadows.blur, shapes.symbols, babel, tikzmark}
+\RequirePackage{wrapfig} %imagen entre texto
+\RequirePackage{float} %posicionamineto de imagenes
+\RequirePackage{graphics, graphicx, svg} %graficas
+%La ruta se definirá más adelante
+\RequirePackage{epigraph}
+\RequirePackage{tcolorbox}
+%---------caption---------------------------
+\makeatletter
+\long\def\@makecaption#1#2{%
+	\vskip\abovecaptionskip
+	\sbox\@tempboxa{#1 #2}%
+	\ifdim \wd\@tempboxa >\hsize
+	#1 #2\par
+	\else
+	\global \@minipagefalse
+	\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+	\fi
+	\vskip\belowcaptionskip
+}
+\makeatother
+%-------------------------------------------
+% FIN Imagenes SVG, tikz
+%-------------------------------------------
+%-------------------------------------------
+% INICIO configuracion pagina
+%-------------------------------------------
+\RequirePackage[letterpaper]{geometry}
+%-------------------------------------------
+% FIN configuracion pagina
+%-------------------------------------------
+%-------------------------------------------
+% INICIO enlaces referencia
+%-------------------------------------------
+\RequirePackage[
+colorlinks,
+linkcolor = referenceLink, 
+urlcolor  = referenceLink, 
+pdfpagelabels=true]{hyperref}%referencias %inicio quitar hypervinculos de contenido
+\makeatletter
+\let\Hy@linktoc\Hy@linktoc@none
+\makeatother
+%-------------------------------------------
+% FIN enlaces referencias
+%-------------------------------------------
+%-------------------------------------------
+% INICIO opciones
+%-------------------------------------------
+\RequirePackage{pgfopts}
+\newif{\ifsage}
+\newif{\ifanimation}
+\newif{\iflite}
+%\iflitefalse
+\pgfkeys{
+	/OPTIONS/.cd,
+	animation/.is if=animation,
+	lite/.is if=lite,
+	sage/.is if=sage,
+	theme/.is if=theme,
+	textwidth/.initial=390pt,
+	textwidth/.get=\keyWidth,
+	textwidth/.store in=\keyWidth,
+	root/.initial= ../,
+	root/.get=\pathroot,
+	root/.store in=\pathroot,
+	rootthemes/.initial= \pathroot template/,
+	rootthemes/.get=\pathrootthemes,
+	rootthemes/.store in=\pathrootthemes,
+	theme/.initial=default,
+	theme/.get=\keyTheme,
+	theme/.store in=\keyTheme,
+	host/.initial=http://project.losacademycos.com/appl/latex/security/,
+	host/.get=\hostPrimary,
+	host/.store in=\hostPrimary,
+}
+\ProcessPgfOptions{/OPTIONS}
+\geometry{textwidth=\keyWidth}
+\def\printtheme{\keyTheme} 
+\def\paththeme{\pathrootthemes\keyTheme}
+%-------------------------------------------
+% INICIO update
+%-------------------------------------------
+\RequirePackage[engine=curl]{download}
+\RequirePackage{shellesc}
+\RequirePackage{ifplatform}
+\newcommand{\installAcademycosFiles}[3]{%1 ruta, 2 nombre, 3 extension 
+	\download[#1#2.#3]{\hostPrimary #2.#3}%\paththeme/lib/ [ruta de instalacion]{url}
+}
+%-------------------------------------------
+% FIN update
+%-------------------------------------------
+%-------------------------------------------
+% INICIO rutas graficas
+%-------------------------------------------
+%-------------Ruta imagenes-----------------
+\graphicspath{{./images/}, {./\paththeme/images/}}
+%-------------------------------------------
+% FIN rutas graficas
+%-------------------------------------------
+\iflite	
+	\RequirePackage{\paththeme/lib/colors}
+	\RequirePackage{\paththeme/lib/environmentsTCB}%requiere
+\else
+	%-------------------------------------------
+	% INICIO portada, indice
+	%-------------------------------------------
+	\RequirePackage{eso-pic}  %imagen en portada SVG
+	\RequirePackage{imakeidx} %indice
+	\makeindex
+	%-------------------------------------------
+	% FIN portada, indice
+	%-------------------------------------------
+	%-------------------------------------------
+	% INICIO librerias fancy TOC, Chapter, header, section
+	%-------------------------------------------
+	\RequirePackage{\paththeme/load}
+	%-------------------------------------------
+	% FIN librerias fancy TOC, Chapter, header, section
+	%-------------------------------------------
+\fi
+\ifanimation
+	\RequirePackage{animate}%animaciones
+	\newcommand{\panimate}[2]{#2}
+\else 
+	\newcommand{\panimate}[2]{#1}
+\fi
+\ifsage
+	\RequirePackage{\pathroot lib/sage/sageCommands}%plugins
+	\RequirePackage{\pathroot lib/sage/sagetex}
+\fi
+
+%-------------------------------------------
+% FIN opciones
+%-------------------------------------------
+
+%-------------------------------------------
+% INICIO Variables principales
+%-------------------------------------------
+\makeatletter                       
+\def\printauthor{{\@author} }              
+\def\printtitle{{\@title} }
+\def\printversion{{10} }
+\makeatother
+%-------------------------------------------
+% FIN Variables principales
+%-------------------------------------------
+%-------------------------------------------
+%-------------------------------------------
+% FIN Variables principales
+%-------------------------------------------
+\spanishdecimal{.}
+\setlength{\JustifyingParindent}{0mm}
+%\usepackage{parskip}
+%\setlength{\parindent}{-10pt}
+%-------------------------------------------
+%\RequirePackage{subfigure}

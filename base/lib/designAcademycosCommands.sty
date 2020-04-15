@@ -1,0 +1,92 @@
+\newcommand{\saltoI}{
+	
+	\vspace{1em} 
+}
+%-------------------------------------------
+%Dedicatoria
+%-------------------------------------------
+\newenvironment{dedication}{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{\stretch{1}}
+	\hfill
+	\begin{minipage}[t]{0.66\textwidth}
+		\raggedright
+		{\Large\textbf{Dedicatoria.}}\\
+	}{
+	\end{minipage}
+	\vspace*{\stretch{3}}
+	\clearpage
+}
+\newenvironment{initialmessage}{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{\stretch{1}}
+	\hfill
+	\begin{minipage}[t]{0.66\textwidth}
+	}{
+	\end{minipage}
+	\vspace*{\stretch{3}}
+	\clearpage
+}
+%-------------------------------------------
+% INICIO Portada
+%-------------------------------------------
+% portada reemplazada por imagen .svg
+%contraportada 
+\newenvironment{coverpage}{
+	\noindent
+	\thispagestyle{empty}
+}{}
+\newenvironment{copyrightpage}{
+	\cleardoublepage
+	\thispagestyle{empty}
+	\vspace*{\fill}
+}{\clearpage}
+%-------------------------------------------
+% FIN Portada
+%-------------------------------------------
+%-------------------------------------------
+% INICIO demostracion
+%-------------------------------------------
+%NOTA tiene argumento opcional
+\newenvironment{proof}[1][\color{titleProof}Demostración]{\textbf{#1.} }{
+    {\color{titleSolution}
+	    \begin{flushright}
+		    \rule{0.5em}{0.5em}
+	    \end{flushright}
+	}
+}
+\newenvironment{proof1}[1][\color{titleProof}Demostración]{\textbf{#1.} }{}
+%-------------------------------------------
+% FIN demostracion
+%-------------------------------------------
+%-------------------------------------------
+% INICIO solución
+%-------------------------------------------
+%NOTA tiene argumento opcional
+\newenvironment{solution}[1][\unskip]{
+	{\ifthenelse{\equal{p}{#1}}%
+		{Salto personalizado#1}
+		{\saltoI}
+	}
+	{\color{titleSolution}Solución.}
+	\newline 
+}{
+    {\color{titleSolution}
+    	\begin{flushright}
+		    \rule{0.5em}{0.5em}
+	    \end{flushright}
+	}
+}
+\newenvironment{solution1}[1][\unskip]{
+	{\ifthenelse{\equal{p}{#1}}%
+		{Salto personalizado#1}
+		{\saltoI}
+	}
+	{\color{titleSolution}Solución.}
+	\newline 
+}{}
+%-------------------------------------------
+% FIN solución
+%-------------------------------------------

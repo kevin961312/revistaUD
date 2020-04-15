@@ -1,0 +1,20 @@
+%-------------------------------------------
+% INICIO configuracion programacion 
+% (requiere antes que se defina textwidth package geometry)
+%-------------------------------------------
+%------------------variables---------------
+\RequirePackage{calc} %calculos internos
+\newdimen\numeralChapterAncho 
+\numeralChapterAncho = 3.76cm % tamaño fijo
+\newdimen\desfaceText 
+\desfaceText = 3cm % tamaño fijo
+\newlength{\tituloChapterAncho}
+\newlength{\anchoMaxTexto}
+\setlength{\tituloChapterAncho}{\textwidth-\numeralChapterAncho}%
+\setlength{\anchoMaxTexto}{\textwidth+\desfaceText}%
+\newdimen\distanciaPuntosTOC 
+\distanciaPuntosTOC = 2mm % tamaño fijo
+%-------------------end variables-----------
+%-------------------------------------------
+% FIN configuracion programacion 
+%-------------------------------------------
