@@ -17,3 +17,6 @@ book
 *.blg
 *.fdb_latexmk
 *.fls
+*.pdf
+*.gz
+main.tex
